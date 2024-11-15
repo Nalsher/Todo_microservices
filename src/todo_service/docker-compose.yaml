@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:latest
+    container_name: db
+    restart: always
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+    networks:
+      - todoservices
+
+  app:
+    build: .
+    container_name: app
+    restart: always
+
+    ports:
+      - 8000:8000
+    env_file:
+      .env
+    networks:
+      - todoservices
+    depends_on:
+      - db
+
+networks:
+  todoservices:
+    driver: "bridge"

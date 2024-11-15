@@ -1,35 +1,6 @@
 version: "3.8"
 
 services:
-  db:
-    image: postgres:latest
-    container_name: db
-    restart: always
-    volumes:
-      - ./db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    ports:
-      - 5432:5432
-    networks:
-      - todoservices
-
-  app:
-    build: .
-    container_name: app
-    restart: always
-    ports:
-      - 8000:8000
-    env_file:
-      .env
-    networks:
-      - todoservices
-    depends_on:
-      - broker
-      - db
-
   broker:
     image: apache/kafka:latest
     container_name: broker
@@ -49,9 +20,3 @@ services:
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_NUM_PARTITIONS: 3
 
-
-
-
-networks:
-  todoservices:
-    driver: "bridge"

@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:latest
+    container_name: db
+    restart: always
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5433:5433
+    networks:
+      - noftification
+
+  bot:
+    build: .
+    container_name: bot
+    restart: always
+    depends_on:
+      - db
+
