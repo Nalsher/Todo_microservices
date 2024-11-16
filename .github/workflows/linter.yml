@@ -19,6 +19,9 @@ jobs:
           virtualenvs-in-project: false
       - name: Install dependencies
         run: poetry init
-        run: poetry install
+
+      - name: Install flake
+        run: poetry add flake8
+        
       - name: Run flake8
         run: poetry run flake8
