@@ -17,8 +17,6 @@ jobs:
           version: 1.5.1
           virtualenvs-create: true
           virtualenvs-in-project: false
-      - name: Install dependencies
-        run: poetry init
 
       - name: Install flake
         run: poetry add flake8
