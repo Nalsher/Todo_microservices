@@ -14,6 +14,6 @@ jobs:
       - name: Install and configure Poetry
         uses: snok/install-poetry@v1
       - name: Install dependencies
-        run: poetry install flake8
+        run: poetry add flake8
       - name: Run flake8
         run: poetry run flake8
