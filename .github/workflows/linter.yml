@@ -4,11 +4,16 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      -name: Setup python
-      uses: actions/setup-python@v1
-      -name: Poetry
-      uses: snok/install-poetry@v1
-      -name: Poetry install flake
-      run: poetry install flake8
-      -name: Run Flake8
-      run: poetry run flake8
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.11.10
+          architecture: x64
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Install and configure Poetry
+        uses: snok/install-poetry@v1
+      - name: Install dependencies
+        run: poetry install flake8
+      - name: Run flake8
+        run: poetry run flake8
