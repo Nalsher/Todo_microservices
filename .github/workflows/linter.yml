@@ -4,11 +4,19 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup python
+      - name: Setup Python
         uses: actions/setup-python@v1
-      - name: Poetry
+        
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Install and configure Poetry
         uses: snok/install-poetry@v1
-      - name: Poetry install flake
-        run: poetry install flake8
-      - name: Run Flake8
-        run: poetry run flake8
+        with:
+          version: 1.5.1
+          virtualenvs-create: true
+          virtualenvs-in-project: false
+
+      - name: Install flake
+        run: poetry add flake8
+        
+      - name: Run flake8
