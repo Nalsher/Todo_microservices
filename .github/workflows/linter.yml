@@ -1,0 +1,14 @@
+on: push
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      -name: Setup python
+      uses: actions/setup-python@v1
+      -name: Poetry
+      uses: snok/install-poetry@v1
+      -name: Poetry install flake
+      run: poetry install flake8
+      -name: Run Flake8
+      run: poetry run flake8
