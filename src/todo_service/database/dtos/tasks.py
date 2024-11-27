@@ -1,6 +1,5 @@
-from src.todo_service.database.dtos.base import BaseDTO, BaseResponseDTO, BaseRequestDTO
+from src.todo_service.database.dtos.base import BaseResponseDTO, BaseRequestDTO
 from src.todo_service.database.dtos.users import User
-from typing import List
 
 
 class TaskRequestDTO(BaseRequestDTO):
