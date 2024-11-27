@@ -6,6 +6,7 @@ services:
     container_name: db
     restart: always
     volumes:
+      - .:/docker-entrypoint-initdb.d
       - ./database:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=postgres
