@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from pydantic import BaseModel
 
 
@@ -15,3 +17,20 @@ class UpdateTaskSchema(BaseModel):
 
 class DeleteTaskSchema(BaseModel):
     task_id: int
+
+
+class TaskSchema(BaseModel):
+    task_id: int
+    title: str
+    description: str
+    user_id: int
+    is_active: bool
+
+
+class ResponseTaskSchema(BaseModel):
+    task_id: int
+    title: str
+    description: str
+    user_id: int
+    is_active: bool
+    created_at: datetime
