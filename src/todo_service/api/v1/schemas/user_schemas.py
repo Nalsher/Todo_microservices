@@ -1,4 +1,6 @@
 from pydantic import BaseModel
+from typing import List
+from src.todo_service.api.v1.schemas.tasks_schemas import TaskSchema
 
 
 class CreateUserSchema(BaseModel):
@@ -6,6 +8,14 @@ class CreateUserSchema(BaseModel):
     password: str
     email: str
     is_active: False
+
+
+class ResponseUserSchema(BaseModel):
+    id: int
+    username: str
+    email: str
+    tasks: List["TaskSchema"]
+    is_active: bool
 
 
 class UpdateUserSchema(BaseModel):

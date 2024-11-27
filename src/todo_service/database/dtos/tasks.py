@@ -11,4 +11,6 @@ class TaskRequestDTO(BaseRequestDTO):
 
 
 class TaskResponseDTO(BaseResponseDTO):
-    pass
+    title: str
+    description: str
+    is_active: bool
