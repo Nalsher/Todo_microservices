@@ -6,3 +6,6 @@ class UserRepository(RepositoryInterface):
 
     async def create(self, *args, session: AsyncSession) -> None:
         pass
+
+    async def delete(self, id: int) -> bool:
+        pass
