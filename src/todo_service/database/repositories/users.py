@@ -1,7 +1,7 @@
 from sqlalchemy.ext.asyncio import AsyncSession
+from src.todo_service.database.repositories.AbstractRepositories import RepositoryInterface
 
+class UserRepository(RepositoryInterface):
 
-class UserRepository:
-
-    async def create_user(self, session: AsyncSession, user_model):
+    async def create(self, *args) -> None:
         pass

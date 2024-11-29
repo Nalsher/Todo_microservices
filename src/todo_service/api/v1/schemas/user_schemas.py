@@ -9,6 +9,8 @@ class CreateUserSchema(BaseModel):
     email: str
     is_active: False
 
+class CreateUserResponse(BaseModel):
+    id: int
 
 class ResponseUserSchema(BaseModel):
     id: int
