@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import List
-from src.todo_service.api.v1.schemas.tasks_schemas import TaskSchema
+from src.todo_service.api.v1.schemas.TaskSchemas import TaskSchema
 
 
 class CreateUserSchema(BaseModel):
