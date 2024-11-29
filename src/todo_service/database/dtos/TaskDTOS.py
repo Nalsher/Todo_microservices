@@ -1,4 +1,4 @@
-from src.todo_service.database.dtos.BaseDTOS import BaseResponseDTO, BaseRequestDTO
+from src.todo_service.database.dtos.BaseDTOS import BaseResponseDTO, BaseRequestDTO  # noqa: E501
 from src.todo_service.database.dtos.UserDTOS import User
 
 

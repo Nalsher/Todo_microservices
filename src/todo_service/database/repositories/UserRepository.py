@@ -4,7 +4,7 @@ from fastapi.params import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from src.todo_service.database.repositories.AbstractRepositories import RepositoryInterface  # noqa: E501
 from src.todo_service.database.utils.Utils import yield_session
-from src.todo_service.database.dtos.UserDTOS import UserRequestDTO, UserUpdateDTO
+from src.todo_service.database.dtos.UserDTOS import UserRequestDTO, UserUpdateDTO  # noqa: E501
 from src.todo_service.database.models.users import User
 from sqlalchemy import select
 
