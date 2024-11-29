@@ -1,5 +1,5 @@
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncEngine, AsyncSession  # noqa: E501
-from src.todo_service.config.config import settings
+from src.todo_service.config.Config import settings
 
 
 async def create_engine() -> AsyncEngine:
