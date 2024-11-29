@@ -9,6 +9,13 @@ class UserRequestDTO(BaseRequestDTO):
     is_active: False
 
 
+class UserUpdateDTO(BaseRequestDTO):
+    username: str | None = None
+    password: str | None = None
+    email: str | None = None
+    is_active: False | None = None
+
+
 class UserResponseDTO(BaseResponseDTO):
     username: str
     password: str
