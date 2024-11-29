@@ -9,7 +9,7 @@ class RepositoryInterface(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    async def get(self) -> Any:
+    async def get(self, *args) -> Any:
         raise NotImplementedError
 
     @abstractmethod
