@@ -13,7 +13,7 @@ class RepositoryInterface(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    async def delete(self, id: int) -> bool:
+    async def delete(self, *args) -> bool:
         raise NotImplementedError
 
     @abstractmethod
