@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
-from src.todo_service.database.repositories.AbstractRepositories import RepositoryInterface
+from src.todo_service.database.repositories.AbstractRepositories import RepositoryInterface  # noqa: E501
 from fastapi import Response
+from src.todo_service.database.dtos.UserDTOS import UserRequestDTO
 
 
 class AbstractService(ABC):
@@ -10,13 +11,21 @@ class AbstractService(ABC):
         self.repository = repository
 
     @abstractmethod
-    def create(self, *args) -> Response:
-        self.repository.create(*args)
+    async def create(self, user: UserRequestDTO) -> Response:
+        raise NotImplementedError
 
     @abstractmethod
-    def delete(self, id: int) -> Response:
-        self.repository.delete(id)
+    async def delete(self, id: int) -> Response:
+        raise NotImplementedError
 
     @abstractmethod
-    def get(self, *args) -> Response:
-        self.repository.get(*args)
+    async def get(self, *args) -> Response:
+        raise NotImplementedError
+
+    @abstractmethod
+    async def get_all(self, *args) -> Response:
+        raise NotImplementedError
+
+    @abstractmethod
+    async def update(self, *args) -> Response:
+        raise NotImplementedError
