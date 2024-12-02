@@ -56,5 +56,11 @@ class UserService(AbstractService):
             response = Response(content={"Failure": "User found failure"}, status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)  # noqa: E501
             return response
 
-    async def get_all(self, *args) -> Response:
-        pass
+    async def get_all(self, session: AsyncSession = Depends(yield_session)) -> Response:  # noqa: E501
+        try:
+            get_all = self.repository.get_all(session)
+            response = Response(content={"Users": get_all}, status_code=status.HTTP_200_OK)  # noqa: E501
+            return response
+        except:  # noqa: E722
+            response = Response(content={"Failure": "Users found failure"}, status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)  # noqa: E501
+            return response

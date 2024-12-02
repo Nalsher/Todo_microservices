@@ -17,7 +17,7 @@ class RepositoryInterface(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    async def get_all(self) -> List[Any]:
+    async def get_all(self, *args) -> List[Any]:
         raise NotImplementedError
 
     @abstractmethod
