@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from src.todo_service.database.repositories.AbstractRepositories import RepositoryInterface
+from src.todo_service.database.repositories.AbstractRepositories import RepositoryInterface   # noqa: E501
 from fastapi import Response
 
 
