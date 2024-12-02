@@ -28,7 +28,7 @@ class UserRepository(RepositoryInterface):
             except:     # noqa: E722
                 return False
 
-    async def get(self, id: int, session: AsyncSession = Depends(yield_session)) -> Any:   # noqa: E501
+    async def get(self, id: int, session: AsyncSession = Depends(yield_session)) -> User:   # noqa: E501
         async with session as _session:
             try:
                 user = await _session.get(User, id)
