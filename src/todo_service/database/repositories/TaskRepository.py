@@ -4,7 +4,7 @@ from fastapi.params import Depends
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.todo_service.database.dtos.TaskDTOS import TaskRequestDTO
+from src.todo_service.database.dtos.TaskDTOS import TaskRequestDTO, UpdateTaskRequestDTO    # noqa: E501
 from src.todo_service.database.repositories.AbstractRepositories import RepositoryInterface   # noqa: E501
 from src.todo_service.database.utils.Utils import yield_session
 from src.todo_service.database.models.tasks import Task
@@ -39,5 +39,13 @@ class TaskRepository(RepositoryInterface):
             results = execute.scalars().all()
             return results
 
-    async def update(self, *args) -> bool:
-        pass
+    async def update(self, task_id: int, update: UpdateTaskRequestDTO, session: AsyncSession = Depends(yield_session)) -> bool:   # noqa: E501
+        async with session as _session:
+            task_to_update = await _session.get(Task, id)
+            if update.title:
+                task_to_update.title = update.title
+            if update.description:
+                task_to_update.description = update.description
+            if update.is_active:
+                task_to_update.is_active = update.is_active
+            await _session.commit()
