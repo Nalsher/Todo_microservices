@@ -1,7 +1,9 @@
 from abc import ABC, abstractmethod
+
+from pydantic import BaseModel
+
 from src.todo_service.database.repositories.AbstractRepositories import RepositoryInterface   # noqa: E501
 from fastapi import Response
-from src.todo_service.database.dtos.UserDTOS import UserRequestDTO
 
 
 class AbstractService(ABC):
@@ -11,7 +13,7 @@ class AbstractService(ABC):
         self.repository = repository
 
     @abstractmethod
-    async def create(self, user: UserRequestDTO) -> Response:
+    async def create(self, entity: BaseModel) -> Response:
         raise NotImplementedError
 
     @abstractmethod
